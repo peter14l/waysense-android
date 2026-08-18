@@ -75,7 +75,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: WaySense-release
-          path: app/build/outputs/apk/release/*.apk
+          path: |
+            app/build/outputs/apk/release/*.apk
 
       - name: Clean up keystore
         if: always()
