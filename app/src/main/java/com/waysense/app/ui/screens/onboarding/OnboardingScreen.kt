@@ -2,7 +2,7 @@ package com.waysense.app.ui.screens.onboarding
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
@@ -10,7 +10,7 @@ fun OnboardingScreen(
     onOnboardingComplete: () -> Unit,
     viewModel: OnboardingViewModel = viewModel(),
 ) {
-    val state by remember { viewModel.state }
+    val state by viewModel.state.collectAsStateWithLifecycle()
 
     when (state.currentStep) {
         1 -> OnboardingScreen1Welcome(onGetStarted = { viewModel.nextStep() })
