@@ -44,7 +44,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/v')
         run: |
           set -e
-          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > waysense-release.jks
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > app/waysense-release.jks
           echo "Keystore reconstructed successfully"
 
       - name: Run lint
@@ -80,7 +80,7 @@ jobs:
       - name: Clean up keystore
         if: always()
         run: |
-          rm -f waysense-release.jks
+          rm -f app/waysense-release.jks
           rm -f keystore.base64
 
       - name: Create GitHub Release
